@@ -5,19 +5,16 @@ import java.util.Scanner;
 public class ReverseLines {
 
   public static void main(final String[] args) {
-    // TODO read successive input lines until EOF, then print out in reverse order
-
-
-
-    final Scanner input = new Scanner(System.in);
-    while (input.hasNextLine()) {
-      final String line = input.nextLine();
-
-
-
+    final Scanner sc = new Scanner(System.in);
+    printReverse(sc);
+    // done
+    private static void printReverse(final Scanner sc) {
+    while (sc.hasNextLine()) {
+      final String lines = sc.nextLine();
+      System.out.println(lines);
+      printReverse(sc);
+      System.out.println(lines);
     }
-
-
 
   }
 }
