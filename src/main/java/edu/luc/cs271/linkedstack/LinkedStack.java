@@ -2,13 +2,16 @@ package edu.luc.cs271.linkedstack;
 
 import java.util.List;
 import java.util.ArrayList;
-private int size = 0;
-private Node<E> top;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+
 
 public class LinkedStack<E> implements IStack<E> {
 
   /** The topmost node of this stack. The stack gets pushed down from here. */
   private Node<E> top;
+  private int size = 0;
 
   // TODO why don't we need an explicit constructor?
 
@@ -26,10 +29,10 @@ public class LinkedStack<E> implements IStack<E> {
       throw new NoSuchElementException();
     }
     else {
-      E ans = top.data;
+      E result = top.data;
       top = top.next;
       size--;
-      return ans;
+      return result;
     }
   } //done
 
@@ -55,14 +58,14 @@ public class LinkedStack<E> implements IStack<E> {
 
   @Override
   public List<E> asList() {
-   final ArrayList<E> result = new ArrayList<>(size);
-   populateList(top, result); 
-   return result;
+    final List<E> result = new ArrayList<>(size);
+    populateList(top, result); 
+    return result;
   }  //done
 
- @Override
+  @Override
   public List<E> asFifoList() {
-    final List<E> result = new ArrayList(size);
+    final List<E> result = new ArrayList<>(size);
     populateFifoList(top, result);
     return result; 
   } //done
@@ -78,6 +81,7 @@ public class LinkedStack<E> implements IStack<E> {
       }
     } //done
   }
+ 
   private void populateFifoList(final Node<E> curr, final List<E> result) {
     if (curr != null) {
       if (curr.next != null){
